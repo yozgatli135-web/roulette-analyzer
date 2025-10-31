@@ -1,0 +1,19 @@
+name: Run Roulette Analyzer
+
+on:
+  workflow_dispatch:  # Manuel başlatma
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3  # Repo’yu indir
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'  # Python sürümü
+      - name: Install dependencies
+        run: pip install -r requirements.txt || echo "No requirements file"
+      - name: Run main.py
+        run: python main.py
